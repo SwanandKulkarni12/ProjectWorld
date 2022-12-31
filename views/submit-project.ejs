@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="img/logo.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/project.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Project upload Form</title>
+  </head>
+  <body>
+    <%- include('partials/loader.ejs') %>
+    <form action="/project-submit" class="form" method="post" enctype="multipart/form-data">
+      <h1 class="text-center">Project Upload Form</h1>
+      <!-- Progress bar -->
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div
+          class="progress-step progress-step-active"
+          data-title="Intro"
+        ></div>
+        <div class="progress-step" data-title="Contact"></div>
+        <div class="progress-step" data-title="Project Info"></div>
+        <div class="progress-step" data-title="Images"></div>
+        <div class="progress-step" data-title="Report"></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="form-step form-step-active">
+        <div class="input-group">
+          <label for="username">Name Of Institute</label>
+          <input type="text" name="name" id="username" />
+        </div>
+        <div class="input-group">
+          <label for="position">Institute Code</label>
+          <input type="text" name="code" id="position" />
+        </div>
+        <div class="">
+          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" id="phone" />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="dob">Name Of Project</label>
+          <input type="text" name="project_name" id="dob" />
+        </div>
+        <div class="input-group">
+          <div class="wrapper">
+
+       
+          <div class="select-btn">
+            <span class="domain">Select Domain</span>
+            <input type="text" id="domain" name="domain">
+            <i class="uil uil-angle-down"></i>
+          </div>
+          <div class="content">
+            <div class="search">
+              <i class="uil uil-search"></i>
+              <input spellcheck="false" type="text" placeholder="Search">
+            </div>
+            <ul class="options"></ul>
+          </div>
+        </div>
+        <textarea name="description" id="" cols="30" rows="10" maxlength="400" class="textarea" style="resize:none" placeholder=" "></textarea>
+        <label for="" class="description">Description Of Project</label>
+      <i class="uis uis-at"></i>
+      
+       
+      </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="drag">
+          <div class="drag-area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header>Upload Images</header>
+            
+            <label>Browse File</label>
+            <input type="file" name="files" class="file" multiple>
+          </div>
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+        </div>
+      <div class="form-step">
+        <div class="drag">
+          <div class="drag-area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header>Upload Research Paper</header>
+            
+            <label>Browse File</label>
+            <input type="file" name="files" class="file" multiple>
+          </div>
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <input type="submit" value="Submit" class="btn" />
+        </div>
+        </div>
+    </form>
+    
+    <script src="js/project.js" defer></script>
+    <script src="js/upload.js"></script>
+    <script>
+const wrapper = document.querySelector(".wrapper"),
+selectBtn = wrapper.querySelector(".select-btn"),
+searchInp = wrapper.querySelector("input"),
+options = wrapper.querySelector(".options");
+const domain=document.querySelector('#domain')
+let countries = ["App Development","Web Development","Hardware Based","Machine Learning","3D Printing","Cyber Security","Blockchain"]
+
+function addCountry(selectedCountry) {
+    options.innerHTML = "";
+    countries.forEach(country => {
+        let isSelected = country == selectedCountry ? "selected" : "";
+        let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
+        options.insertAdjacentHTML("beforeend", li);
+    });
+}
+addCountry();
+
+function updateName(selectedLi) {
+    searchInp.value = "";
+    addCountry(selectedLi.innerText);
+    wrapper.classList.remove("active");
+    selectBtn.firstElementChild.innerText = selectedLi.innerText;
+    domain.value=selectedLi.innerText
+}
+
+searchInp.addEventListener("keyup", () => {
+    let arr = [];
+    let searchWord = searchInp.value.toLowerCase();
+    arr = countries.filter(data => {
+        return data.toLowerCase().startsWith(searchWord);
+    }).map(data => {
+        let isSelected = data == selectBtn.firstElementChild.innerText ? "selected" : "";
+        return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
+    }).join("");
+    options.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Domain Not Found</p>`;
+});
+
+selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+    </script>
+     <!-- <script>
+      const input = document.querySelector(".textarea"),
+      counter = document.querySelector(".counter"),
+      maxLength = input.getAttribute("maxlength");
+      input.onkeyup = ()=>{
+        counter.innerText = maxLength - input.value.length;
+      }
+    </script> -->
+  </body>
+</html>

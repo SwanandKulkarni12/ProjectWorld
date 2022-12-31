@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="img/logo.jpg">
+  
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/styles.css">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+   <link rel="stylesheet" media="screen and (max-width:1300px)" href="phone/index.css">
+
+   <!-- custom js file link  -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+   <script src="js/script.js" defer></script>
+<title>Home Page</title>
+</head>
+<body>
+ 
+    <%- include('partials/loader.ejs') %>
+    <nav>
+   
+       <% if (result==1) { %>
+        
+        
+        <ul>
+            <div class="logo">
+                <img src="img/logo.jpg" alt="">
+                <h1>ProjectWorld</h1>
+            </div>
+         <div class="links">
+            <li><a href="/">home</a></li>
+            <li><a href="/project-submit">Upload Project</a></li>
+            <li><a href="/FAQ">FAQ</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+         </div>
+           
+     
+        </ul>
+           <%} else { %>
+            <ul>
+                <div class="logo">
+                    <img src="img/logo.jpg" alt="">
+                    <h1>ProjectWorld</h1>
+                </div>
+                <div class="links">
+                    <li><a href="/">home</a></li>
+                    <li><a href="/project-submit">Upload Project</a></li>
+                    <li><a href="/FAQ">FAQ</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/signup">Login/Signup</a></li>
+                </div>
+               
+            </ul>
+        
+           <% } %>
+   
+  
+   </nav>
+   <section class="show">
+    <div class="quote">
+        
+        <h1>Showcase Your Talent!</h1>
+        <p style="line-height: 40px;">WE BELIEVE IN INNOVATION AND IMPROVEMENT IN STUDENT’S CAREER. THIS WEBSITE IS NOT ONLY FOR INSTITUTES TO SHOW THE WORK DONE BY THEIR STUDENTS BUT IS ALSO A HUGE STEP FOR THEIR BETTER FUTURE.</p>
+    </div>
+    <div class="photo">
+        <img src="img/bg (1).png" alt="">
+    </div>
+   </section>
+   <section class="count">
+    <div class="institute">
+        <img src="img/institute.png" alt="">
+        <h1>Institutes Registered</h1>
+        <h2 id="institute-counter"><%=institute%></h2>
+    </div>
+    <div class="proUpload">
+        <img src="img/project.png" alt="">
+        <h1>Projects Uploaded</h1>
+        <h2 id="project-counter"><%=pro-1%></h2>
+    </div>
+  
+   </section>
+   <h1 id="hardware-h1" style="text-align: center; font-size:40px;">Innovations</h1>
+<section id="projects" data-aos="fade-up" data-aos-offset="120"
+data-aos-delay="30">
+    
+<% if(project.length<4){ %>
+    <% for(let i=0; i<project.length; i++) {%>
+    <div class="project">
+         
+                <div class="proimage" style="background: url('uploads/<%=project[i].files[0].fileName%>') no-repeat center center/contain" >
+            
+                </div>
+                <h2>Name: <p><%=project[i].project_name%></p></h2>
+                <h2>Domain: <p><%=project[i].domain%></p></h2>
+                <h2>Institute Name : <p><%=project[i].name%></p></h2>
+                <a href="/project/<%=project[i]._id%>">Read More</a>
+              </div>
+           <% } %>
+        <% } else{ %>
+          <% for(let i=0; i<4; i++) {%>
+            <div class="project">
+            <div class="proimage" style="background: url('uploads/<%=project[i].files[0].fileName%>') no-repeat center center/contain" >
+            
+            </div>
+            <h2>Name: <p><%=project[i].project_name%></p></h2>
+            <h2>Domain: <p><%=project[i].domain%></p></h2>
+            <h2>Institute Name : <p><%=project[i].name%></p></h2>
+            <a href="/project/<%=project[i]._id%>">Read More</a>
+        </div>
+         <% } %>
+        <% } %>
+        
+    
+</section>
+<!-- <h1 id="hardware-h1" >App Development Projects</h1>
+<section id="projects" data-aos="fade-up" data-aos-offset="120"
+data-aos-delay="30">
+    <div class="project">
+        <div class="proimage" style="background: url('img/app.jpg') no-repeat center center/contain" >
+            
+        </div>
+        <h2>Name: <p>Note Taking App</p></h2>
+        <h2>Domain: <p>App Development</p></h2>
+        <h2>Institute Name : <p>PQRS</p></h2>
+        <a href="#">Read More</a>
+    </div>
+   
+
+    
+
+        
+   
+ 
+   
+</section>
+<h1 id="hardware-h1">Web Development Projects</h1>
+<section id="projects" data-aos="fade-up" data-aos-offset="120"
+data-aos-delay="30">
+    <div class="project">
+        <div class="proimage" style="background: url('img/website.jpg') no-repeat center center/contain" >
+            
+        </div>
+        <h2>Name: <p>Pet Adoption Website</p></h2>
+        <h2>Domain: <p>Web Development</p></h2>
+        <h2>Institute Name : <p>LMNO</p></h2>
+        <a href="#">Read More</a>
+    </div>
+    
+   
+
+    
+   
+   
+</section> -->
+<section>
+    <div class="wrapper" data-aos="fade-up" data-aos-offset="120"
+    data-aos-delay="30">
+
+        <div class="background-container">
+            <div class="bg-1"></div>
+            <div class="bg-2"></div>
+    
+        </div>
+        <div class="about-container">
+            
+            <div class="image-container">
+                <img src="img/about.png" alt="">
+                
+            </div>
+
+            <div class="text-container">
+                <h1>About us</h1>
+             <p>Students studying in various institutes do various projects which are really very good. This website is a platform for such students, teachers and industry specialists. Entire institutes projects and research are available on this single platform. Also recruiters can visit this website to find suitable candidates for their job.</p>
+            
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section id="news" data-aos="fade-up" data-aos-offset="120"
+data-aos-delay="30">
+    <img src="img/news.png" alt="">
+    <div class="news_wrapper">
+        <div class="top">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <div class="bottom">
+          <div class="info">
+            Subscribe to<br>get the latest updates
+          </div>
+          <form action="#">
+            <div class="input-box">
+              <input type="text" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+              <input type="submit" value="Subscribe">
+            </div>
+          </form>
+          
+        </div>
+      </div>
+</section>
+<!-- <section id="upload">
+    <h1>Upload Your Projects</h1>
+    <a href="/project-submit">Upload Project</a>
+</section> -->
+<footer class="footer-area">
+    <div class="footer-wave-box">
+        <div class="footer-wave footer-animation"></div>
+    </div>
+    <div class="main">
+        <div class="footer">
+            <div class="single-footer">
+                <h4>about us</h4>
+                <p style="line-height: 25px;">Students studying in various institutes do various projects which are really very good. This website is a platform for such students, teachers and industry specialists. Entire institutes projects and research are available on this single platform. Also recruiters can visit this website to find suitable candidates for their job.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/neel.kulkarni.376/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/k_shrinidhee?t=u7YT0O-gz6bWl9T8b1oIHw&s=08" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/k_vaishnavi_775" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/sakshi-kulkarni-a12a23229" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="single-footer">
+                <h4>main menu</h4>
+                <ul>
+                    <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="/project-submit"><i class="fas fa-chevron-right"></i> Upload Project</a></li>
+                    <li><a href="/FAQ"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                  
+                </ul>
+            </div>
+            
+          
+            <div class="single-footer">
+                <h4>contact us</h4>
+                <ul>
+                    
+                    <li><a href=""><i class="fas fa-mobile-alt"></i> 123456789</a></li>
+                    <li><a href=""><i class="far fa-envelope"></i> project.com</a></li>
+                    <li><a href=""><i class="fas fa-globe-europe"></i> www.project.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy">
+            <p>&copy; 2022 all rights reserved</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
+
+  

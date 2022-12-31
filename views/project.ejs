@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="http://localhost:3000/img/logo.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://localhost:3000/css/individual.css">
+<link rel="stylesheet" href="http://localhost:3000/css/loader.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <title>Project Information</title>
+</head>
+
+<body>
+  <div id="loader">
+
+   
+    <div class="boxes">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- dribbble -->
+    <a class="dribbble" href="https://dribbble.com/shots/5533600-Loading-boxes" target="_blank"><img src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg" alt=""></a>
+  <div class="container">
+    <div class="left">
+<!-- <img src="http://localhost:3000/uploads/<%=project.files[0].fileName%>" alt=""> -->
+ <!--image slider start-->
+ <div class="slider">
+  <div class="slides">
+    <h1 class="hidden">
+      <%=project.files.length%>
+    </h1>
+    <!--radio buttons start-->
+    <% for(let i = 1; i <= project.files.length-1; i++ ){ %>
+    <input type="radio" name="radio-btn" id="radio<%=i%>">
+   
+    <% } %>
+   
+    <div class="slide first">
+      <img src="http://localhost:3000/uploads/<%=project.files[0].fileName%>" alt="">
+    </div>
+    <% for(let i = 1; i <= project.files.length-2; i++ ){ %>
+      <div class="slide">
+        <img src="http://localhost:3000/uploads/<%=project.files[i].fileName%>" alt="">
+      </div>
+      <% } %>
+
+    <div class="navigation-auto">
+      <% for(let i = 1; i <= project.files.length-1; i++ ){ %>
+        <div class="auto-btn<%=i%>"></div>
+        <% } %>
+
+    </div>
+
+  </div>
+  
+  <div class="navigation-manual">
+    <% for(let i = 1; i <= project.files.length-1; i++ ){ %>
+      <label for="radio<%=i%>" class="manual-btn"></label>
+      <% } %>
+
+  </div>
+  <!--manual navigation end-->
+</div>
+<!--image slider end-->
+<!-- <div class="container-2">
+  <div class="post">
+    <div class="text">Thanks for rating us!</div>
+    <div class="edit">EDIT</div>
+  </div>
+  <div class="star-widget">
+    <input type="radio" name="rate" id="rate-5">
+    <label for="rate-5" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-4">
+    <label for="rate-4" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-3">
+    <label for="rate-3" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-2">
+    <label for="rate-2" class="fas fa-star"></label>
+    <input type="radio" name="rate" id="rate-1">
+    <label for="rate-1" class="fas fa-star"></label>
+    <form action="#">
+      <header></header>
+      <div class="textarea">
+        <textarea cols="30" placeholder="Describe your experience.."></textarea>
+      </div>
+      <div class="btn">
+        <button type="submit">Post</button>
+      </div>
+    </form>
+  </div>
+</div>-->
+
+    </div> 
+    <div class="right">
+<h1><%=project.project_name%></h1>
+<h2>Description</h2>
+<p><%=project.description%></p>
+<h2>Other Details</h2>
+<div class="details">
+  <h3>Institute Name: </h3><p><%=project.name%></p>
+  <h3>Domain: </h3><p><%=project.domain%></p>
+  <h3>Contact Number: </h3><p><%=project.phone%></p>
+</div>
+<a href="mailto:<%=project.email%>" id="send">Send Email</a>
+<% for(let i = project.files.length-1; i <= project.files.length-1; i++ ){ %>
+  <a href="http://localhost:3000/uploads/<%=project.files[i].fileName%>" target="_blank">Download Research Paper</a>
+  
+  <% } %>
+
+    </div>
+  </div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+      AOS.init({
+          offset: 50,
+          duration: 1000,
+      });
+  </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script>
+          setTimeout(function () {
+              $('#loader').fadeToggle();
+          }, 1500);
+      </script>
+       <script type="text/javascript">
+        var counter = 1;
+        let limit=parseInt(document.querySelector('.hidden').innerHTML,10)
+        setInterval(function(){
+          document.getElementById('radio' + counter).checked = true;
+          counter++;
+          if(counter > limit-1){
+            counter = 1;
+          }
+        }, 3000);
+        </script>
+    <script>
+      const btn = document.querySelector("button");
+      const post = document.querySelector(".post");
+      const widget = document.querySelector(".star-widget");
+      const editBtn = document.querySelector(".edit");
+      btn.onclick = ()=>{
+        widget.style.display = "none";
+        post.style.display = "block";
+        editBtn.onclick = ()=>{
+          widget.style.display = "block";
+          post.style.display = "none";
+        }
+        return false;
+      }
+    </script>
+</body>
+</html>

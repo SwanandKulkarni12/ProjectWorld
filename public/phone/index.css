@@ -1,0 +1,47 @@
+/* 
+.quote{
+    width: 55%;
+    margin-left: 5px;
+}
+.quote h1{
+    font-size: 35px;
+}
+.quote p{
+    font-size: 13px;
+}
+.photo{
+    margin-right: 10px;
+}
+.photo img{
+    width: 90%;
+    height: 90%;
+
+}
+
+.about-container{
+    width: 64%;
+    display: block;
+}
+.image-container img{
+    width: 70%;
+    height: 70%;
+}
+.text-container h1{
+    font-size: 110%;
+    margin-bottom: 10px;
+}
+.text-container p{
+    font-size: 12px;
+    line-height: 20px;
+}
+.footer-wave{
+    top: -43%;
+}
+.project{
+    width: 28vw;
+    max-width: 30%;
+
+}
+#projects{
+    justify-content: none;
+} */

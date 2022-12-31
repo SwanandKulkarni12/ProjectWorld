@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito';
+}
+body{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+ border-radius: 15px;
+ -webkit-box-shadow: 0 0 30px #6d8dad;
+  box-shadow: 0 0 30px #6d8dad;
+ border: 2px solid transparent;
+  height: 80vh;
+  width: 70vw;
+  display: flex;
+  position: relative;
+}.slider{
+  width: 380px;
+  -webkit-box-shadow: 0 0 30px #6d8dad;
+  box-shadow: 0 0 30px #6d8dad;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: 40px;
+  margin-right: 10px;
+  margin-top: -50px;
+}
+
+.slides{
+  width: 650%;
+  height: 500px;
+  display: flex;
+}
+
+.slides input{
+  display: none;
+}
+
+.slide{
+  width: 20%;
+  transition: 2s;
+}
+
+.slide img{
+  width: 2000px;
+  height: 500px;
+}
+
+/*css for manual slide navigation*/
+
+.navigation-manual{
+  position: absolute;
+  width: 800px;
+  margin-top: -151px;
+  display: flex;
+  justify-content: center;
+  margin-left: -200px;
+}
+
+.manual-btn{
+  border: 2px solid #0b66f8;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child){
+  margin-right: 40px;
+}
+
+.manual-btn:hover{
+  background: #0b66f8;
+}
+
+#radio1:checked ~ .first{
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+  margin-left: -20%;
+}
+
+#radio3:checked ~ .first{
+  margin-left: -40%;
+}
+
+#radio4:checked ~ .first{
+  margin-left: -60%;
+}
+
+/*css for automatic navigation*/
+
+.navigation-auto{
+  position: absolute;
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  margin-top: 349px;
+  margin-left: -200px;
+}
+
+.navigation-auto div{
+  border: 2px solid #0b66f8;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.navigation-auto div:not(:last-child){
+  margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+  background: #0b66f8;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2{
+  background: #0b66f8;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3{
+  background: #0b66f8;
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4{
+  background: #0b66f8;
+}
+.left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+}
+
+.left img{
+  height: 300px;
+  width: 380px;
+  
+  
+  border-radius: 8px;
+}
+h1{
+  color: #0b66f8;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+h2~p{
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 25px;
+}
+h2{
+  color: #4285F4;
+  margin-bottom: 10px;
+}
+.details{
+ 
+  width: 40%;
+  display: flex;
+  margin-bottom: -20px;
+  flex-direction: column;
+}
+h3~p{
+  
+  color: #4285F4;
+ display: inline;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-family: 'Ubuntu', sans-serif;;
+}
+h3{
+  color: #808080;
+  font-size: 16px;
+  display: inline-block;
+}
+.right{
+  padding: 30px;
+  width: 55%;
+  position: relative;
+}
+.right a{
+  text-decoration: none;
+  background-color: #4285F4;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  font-size: 14px;
+  right: 20px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  text-align: center;
+  width: 21%;
+  bottom: 20px;
+}
+.pdf{
+  border: 2px solid red;
+  position: absolute;
+  right: 20px;
+  width: 30%;
+  height: 50px;
+  border-radius: 8px;
+}
+#send{
+ 
+  padding: 19.5px;
+ position: absolute;
+ right: 200px;
+ cursor: pointer;
+
+}
+.id-5{
+  border: 2px solid red;
+}
+a{
+  transition: all linear 200ms;
+}
+.right a:hover{
+  background: transparent;
+  border: 2px solid black;
+  color: black;
+
+}
+.container-2{
+  /* position: relative; */
+  margin-top: 90px;
+  width: 90%;
+  background: transparent;
+  padding: 20px 30px;
+  /* border: 4px solid red; */
+  border-radius: 5px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.container-2 .post{
+  display: none;
+}
+.container-2 .text{
+  font-size: 25px;
+  color: #666;
+  font-weight: 500;
+}
+.container-2 .edit{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  cursor: pointer;
+}
+.container-2 .edit:hover{
+  text-decoration: underline;
+}
+.container-2 .star-widget input{
+  display: none;
+}
+.star-widget label{
+  font-size: 40px;
+  color: #444;
+  padding: 10px;
+  float: right;
+  transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+  color: #4285F4;
+}
+input:checked ~ label{
+  color: #4285F4;
+}
+input#rate-5:checked ~ label{
+  color: #4285F4;
+  text-shadow: 0 0 20px #952;
+}
+#rate-1:checked ~ form header:before{
+  content: "I just hate it ";
+}
+#rate-2:checked ~ form header:before{
+  content: "I don't like it ";
+}
+#rate-3:checked ~ form header:before{
+  content: "It is awesome ";
+}
+#rate-4:checked ~ form header:before{
+  content: "I just like it ";
+}
+#rate-5:checked ~ form header:before{
+  content: "I just love it ";
+}
+.container-2 form{
+  display: none;
+}
+input:checked ~ form{
+  display: block;
+}
+form header{
+  width: 100%;
+  font-size: 25px;
+  color: #fe7;
+  font-weight: 500;
+  margin: 5px 0 20px 0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+form .textarea{
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+form .textarea textarea{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #eee;
+  border: 1px solid #333;
+  background: #222;
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
+}
+.textarea textarea:focus{
+  border-color: #444;
+}
+form .btn{
+  height: 45px;
+  width: 100%;
+  margin: 15px 0;
+}
+form .btn button{
+  height: 100%;
+  width: 100%;
+  border: 1px solid #444;
+  outline: none;
+  background: #222;
+  color: #999;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+form .btn button:hover{
+  background: #1b1b1b;
+}
+.hidden{
+  display: none;
+}
